@@ -13,7 +13,7 @@ public class OrderEntity {
     @Id
     @Column(name = "id_order", nullable = false)
     @Getter @Setter
-    private int idOrder;
+    private Long idOrder;
 
     @Basic
     @Column(name = "o_type", nullable = false, length = 100)
@@ -28,7 +28,7 @@ public class OrderEntity {
     @Basic
     @Column(name = "o_idMenu", nullable = false)
     @Getter @Setter
-    private int oIdMenu;
+    private Long oIdMenu;
 
     @OneToMany(mappedBy = "orderByBIdOrder")
     @Getter @Setter

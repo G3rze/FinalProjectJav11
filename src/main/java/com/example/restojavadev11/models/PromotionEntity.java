@@ -14,7 +14,7 @@ public class PromotionEntity {
     @Id
     @Column(name = "id_promotion", nullable = false)
     @Getter @Setter
-    private int idPromotion;
+    private Long idPromotion;
 
     @Basic
     @Column(name = "p_nameOfPromotion", nullable = false, length = 100)

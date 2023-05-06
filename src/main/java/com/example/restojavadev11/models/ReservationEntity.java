@@ -13,7 +13,7 @@ public class ReservationEntity {
     @Id
     @Column(name = "id_nReservation", nullable = false)
     @Getter @Setter
-    private int idNReservation;
+    private Long idNReservation;
 
     @Basic
     @Column(name = "r_reservationDate", nullable = false)
@@ -33,27 +33,27 @@ public class ReservationEntity {
     @Basic
     @Column(name = "r_nPeople", nullable = false)
     @Getter @Setter
-    private int rNPeople;
+    private Long rNPeople;
 
     @Basic
     @Column(name = "r_nTable", nullable = false)
     @Getter @Setter
-    private int rNTable;
+    private Long rNTable;
 
     @Basic
     @Column(name = "r_idCustomer", nullable = false)
     @Getter @Setter
-    private int rIdCustomer;
+    private Long rIdCustomer;
 
     @Basic
     @Column(name = "r_idBill", nullable = false)
     @Getter @Setter
-    private int rIdBill;
+    private Long rIdBill;
 
     @Basic
     @Column(name = "r_idEmployee", nullable = false)
     @Getter @Setter
-    private int rIdEmployee;
+    private Long rIdEmployee;
     @ManyToOne
     @JoinColumn(name = "r_nTable", referencedColumnName = "id_nTable", nullable = false)
     @Getter @Setter

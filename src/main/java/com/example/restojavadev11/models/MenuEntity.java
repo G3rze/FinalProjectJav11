@@ -13,7 +13,7 @@ public class MenuEntity {
     @Id
     @Column(name = "id_menu", nullable = false)
     @Getter @Setter
-    private int idMenu;
+    private Long idMenu;
 
     @Basic
     @Column(name = "m_dish_name", nullable = false, length = 100)

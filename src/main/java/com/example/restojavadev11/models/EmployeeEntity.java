@@ -14,7 +14,7 @@ public class EmployeeEntity {
     @Id
     @Column(name = "id_employee", nullable = false)
     @Getter @Setter
-    private int idEmployee;
+    private Long idEmployee;
 
     @Basic
     @Column(name = "e_name", nullable = false, length = 100)
@@ -44,7 +44,7 @@ public class EmployeeEntity {
     @Basic
     @Column(name = "id_restaurant", nullable = false)
     @Getter @Setter
-    private int idRestaurant;
+    private Long idRestaurant;
 
     @ManyToOne
     @JoinColumn(name = "id_restaurant", referencedColumnName = "id_restaurant", nullable = false)

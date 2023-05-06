@@ -13,7 +13,7 @@ public class CustomerEntity {
     @Id
     @Column(name = "id_customer", nullable = false)
     @Getter @Setter
-    private int idCustomer;
+    private Long idCustomer;
 
     @Basic
     @Column(name = "c_name", nullable = false, length = 100)

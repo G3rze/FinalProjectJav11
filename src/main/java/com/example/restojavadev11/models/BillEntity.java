@@ -15,7 +15,7 @@ public class BillEntity {
     @Id
     @Column(name = "id_bill", nullable = false)
     @Getter @Setter
-    private int idBill;
+    private Long idBill;
 
     @Basic
     @Column(name = "b_date", nullable = false)
@@ -35,12 +35,12 @@ public class BillEntity {
     @Basic
     @Column(name = "b_idOrder", nullable = false)
     @Getter @Setter
-    private int bIdOrder;
+    private Long bIdOrder;
 
     @Basic
     @Column(name = "b_idPromotion", nullable = true)
     @Getter @Setter
-    private Integer bIdPromotion;
+    private Long bIdPromotion;
 
     @ManyToOne
     @JoinColumn(name = "b_idOrder", referencedColumnName = "id_order", nullable = false)

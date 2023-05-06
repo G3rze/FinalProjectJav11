@@ -13,7 +13,7 @@ public class TableEntity {
     @Id
     @Column(name = "id_nTable", nullable = false)
     @Getter @Setter
-    private int idNTable;
+    private Long idNTable;
 
     @Basic
     @Column(name = "t_capacity", nullable = false)
