@@ -1,9 +1,8 @@
 package com.restojavadev11.service;
 
-import com.restojavadev11.models.BillEntity;
+import com.restojavadev11.entity.BillEntity;
+import com.restojavadev11.parameters.BillParameters;
 
-import java.sql.Time;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,7 +12,7 @@ public interface IBillService {
 
     Optional<BillEntity> getReserveById(Long id);
 
-    BillEntity newBill(Date date, Time time, Double total, long promotion);
+    BillEntity newBill(BillParameters billParameters);
 
     void deleteBill(long id);
 

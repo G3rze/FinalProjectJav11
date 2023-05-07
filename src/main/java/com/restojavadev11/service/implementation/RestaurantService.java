@@ -1,6 +1,6 @@
 package com.restojavadev11.service.implementation;
 
-import com.restojavadev11.models.RestaurantEntity;
+import com.restojavadev11.entity.RestaurantEntity;
 import com.restojavadev11.repositories.RestaurantRepository;
 import com.restojavadev11.service.IRestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;

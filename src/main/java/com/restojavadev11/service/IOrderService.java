@@ -1,6 +1,7 @@
 package com.restojavadev11.service;
 
-import com.restojavadev11.models.OrderEntity;
+import com.restojavadev11.entity.OrderEntity;
+import com.restojavadev11.parameters.OrderParameters;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,7 +12,7 @@ public interface IOrderService {
 
     Optional<OrderEntity> getOrderById(long id);
 
-    OrderEntity newOrder(String type, double total, long idMenu);
+    OrderEntity newOrder(OrderParameters orderParameters);
 
     void updateOrder(OrderEntity newOrder);
 

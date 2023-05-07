@@ -1,4 +1,4 @@
-package com.restojavadev11.models;
+package com.restojavadev11.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -48,9 +48,6 @@ public class ReservationEntity {
     @Column(name = "r_idEmployee", nullable = false)
     private Long rIdEmployee;
 
-    @ManyToOne
-    @JoinColumn(name = "r_nTable", referencedColumnName = "id_nTable", nullable = false)
-    private TableEntity tableByRNTable;
 
     @ManyToOne
     @JoinColumn(name = "r_idCustomer", referencedColumnName = "id_customer", nullable = false)

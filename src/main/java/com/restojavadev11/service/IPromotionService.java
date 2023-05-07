@@ -1,8 +1,8 @@
 package com.restojavadev11.service;
 
-import com.restojavadev11.models.PromotionEntity;
+import com.restojavadev11.entity.PromotionEntity;
+import com.restojavadev11.parameters.PromotionParameters;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,7 +12,7 @@ public interface IPromotionService {
 
     Optional<PromotionEntity> getPromotionById(long id);
 
-    PromotionEntity newPromotion(String name, String description, double discount, Date startDate, Date finishDate);
+    PromotionEntity newPromotion(PromotionParameters promotionParameters);
 
     void deletePromotion(long id);
 

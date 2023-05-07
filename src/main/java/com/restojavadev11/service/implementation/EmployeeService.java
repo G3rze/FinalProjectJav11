@@ -1,7 +1,7 @@
 package com.restojavadev11.service.implementation;
 
 import com.restojavadev11.service.IEmployeeService;
-import com.restojavadev11.models.EmployeeEntity;
+import com.restojavadev11.entity.EmployeeEntity;
 import com.restojavadev11.repositories.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

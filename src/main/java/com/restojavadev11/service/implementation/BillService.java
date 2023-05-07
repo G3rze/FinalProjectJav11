@@ -1,13 +1,12 @@
 package com.restojavadev11.service.implementation;
 
+import com.restojavadev11.parameters.BillParameters;
 import com.restojavadev11.service.IBillService;
-import com.restojavadev11.models.BillEntity;
+import com.restojavadev11.entity.BillEntity;
 import com.restojavadev11.repositories.BillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Time;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,9 +31,9 @@ public class BillService  implements IBillService {
     }
 
     @Override
-    public BillEntity newBill(Date date, Time time, Double total, long promotion) {
+    public BillEntity newBill(BillParameters billParameters) {
 
-        return newBill(date, time,total,promotion);
+        return newBill(billParameters);
     }
 
     @Override

@@ -1,7 +1,8 @@
 package com.restojavadev11.service.implementation;
 
+import com.restojavadev11.parameters.CustomerParameters;
 import com.restojavadev11.service.ICustomerService;
-import com.restojavadev11.models.CustomerEntity;
+import com.restojavadev11.entity.CustomerEntity;
 import com.restojavadev11.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,8 +32,8 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public CustomerEntity newCustomer(String name, String lastName, String address, String phoneNumber, String email) {
-        return newCustomer(name, lastName, address, phoneNumber, email);
+    public CustomerEntity newCustomer(CustomerParameters customerParameters) {
+        return newCustomer(customerParameters);
     }
 
     @Override

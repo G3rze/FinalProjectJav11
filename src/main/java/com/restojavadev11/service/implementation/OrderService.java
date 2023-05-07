@@ -1,7 +1,8 @@
 package com.restojavadev11.service.implementation;
 
+import com.restojavadev11.parameters.OrderParameters;
 import com.restojavadev11.service.IOrderService;
-import com.restojavadev11.models.OrderEntity;
+import com.restojavadev11.entity.OrderEntity;
 import com.restojavadev11.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,8 +31,8 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public OrderEntity newOrder(String type, double total, long idMenu) {
-        return newOrder(type, total, idMenu);
+    public OrderEntity newOrder(OrderParameters orderParameters) {
+        return newOrder(orderParameters);
     }
 
     @Override

@@ -1,13 +1,12 @@
 package com.restojavadev11.service.implementation;
 
+import com.restojavadev11.parameters.ReservationParameters;
 import com.restojavadev11.service.IReservationService;
-import com.restojavadev11.models.ReservationEntity;
+import com.restojavadev11.entity.ReservationEntity;
 import com.restojavadev11.repositories.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Time;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,8 +31,8 @@ public class ReservationService implements IReservationService {
     }
 
     @Override
-    public ReservationEntity newReservation(Date date, Time startTime, Time endTime, int nPeople, int nTable, long idCustomer, long idBill, long idEmployee) {
-        return newReservation(date, startTime, endTime, nPeople, nTable, idCustomer, idBill, idEmployee);
+    public ReservationEntity newReservation(ReservationParameters reservationParameters) {
+        return newReservation(reservationParameters);
     }
 
     @Override

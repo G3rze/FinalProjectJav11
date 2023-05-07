@@ -1,6 +1,6 @@
 package com.restojavadev11.service;
 
-import com.restojavadev11.models.EmployeeEntity;
+import com.restojavadev11.entity.EmployeeEntity;
 
 import java.util.List;
 import java.util.Optional;

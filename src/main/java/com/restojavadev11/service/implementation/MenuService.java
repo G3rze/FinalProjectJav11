@@ -1,7 +1,7 @@
 package com.restojavadev11.service.implementation;
 
 import com.restojavadev11.service.IMenuService;
-import com.restojavadev11.models.MenuEntity;
+import com.restojavadev11.entity.MenuEntity;
 import com.restojavadev11.repositories.MenuRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

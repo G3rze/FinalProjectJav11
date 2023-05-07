@@ -1,6 +1,6 @@
 package com.restojavadev11.service;
 
-import com.restojavadev11.models.RestaurantEntity;
+import com.restojavadev11.entity.RestaurantEntity;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,12 +1,12 @@
 package com.restojavadev11.service.implementation;
 
+import com.restojavadev11.parameters.PromotionParameters;
 import com.restojavadev11.service.IPromotionService;
-import com.restojavadev11.models.PromotionEntity;
+import com.restojavadev11.entity.PromotionEntity;
 import com.restojavadev11.repositories.PromotionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,8 +31,8 @@ public class PromotionService implements IPromotionService {
     }
 
     @Override
-    public PromotionEntity newPromotion(String name, String description, double discount, Date startDate, Date finishDate) {
-        return newPromotion(name, description, discount,startDate, finishDate);
+    public PromotionEntity newPromotion(PromotionParameters promotionParameters) {
+        return newPromotion(promotionParameters);
     }
 
     @Override

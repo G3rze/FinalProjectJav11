@@ -1,7 +1,7 @@
 package com.restojavadev11.service.implementation;
 
 import com.restojavadev11.service.ITableService;
-import com.restojavadev11.models.TableEntity;
+import com.restojavadev11.entity.TableEntity;
 import com.restojavadev11.repositories.TableRepostory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
