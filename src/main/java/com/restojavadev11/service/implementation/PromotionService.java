@@ -1,5 +1,6 @@
 package com.restojavadev11.service.implementation;
 
+import com.restojavadev11.exceptions.DataAccessException;
 import com.restojavadev11.parameters.PromotionParameters;
 import com.restojavadev11.service.IPromotionService;
 import com.restojavadev11.entity.PromotionEntity;
@@ -26,7 +27,8 @@ public class PromotionService implements IPromotionService {
         try {
             return promotionRepository.findById(id);
         } catch (Exception e){
-            return Optional.empty();
+            //Catch the corresponding exception with the DataAccesEx. class, if there's a problem with the id search
+            throw new DataAccessException("Cannot find the promotion id", e);
         }
     }
 

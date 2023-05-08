@@ -1,5 +1,6 @@
 package com.restojavadev11.service.implementation;
 
+import com.restojavadev11.exceptions.DataAccessException;
 import com.restojavadev11.parameters.CustomerParameters;
 import com.restojavadev11.service.ICustomerService;
 import com.restojavadev11.entity.CustomerEntity;
@@ -27,7 +28,8 @@ public class CustomerService implements ICustomerService {
         try {
             return customerRepository.findById(id);
         } catch (Exception e){
-            return Optional.empty();
+            //Catch the corresponding exception with the DataAccesEx. class, if there's a problem with the id search
+            throw new DataAccessException("Cannot find the customer's id", e);
         }
     }
 
