@@ -1,6 +1,7 @@
 package com.restojavadev11.service.implementation;
 
 import com.restojavadev11.entity.RestaurantEntity;
+import com.restojavadev11.exceptions.DataAccessException;
 import com.restojavadev11.repositories.RestaurantRepository;
 import com.restojavadev11.service.IRestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,8 @@ public class RestaurantService implements IRestaurantService {
         try {
             return restaurantRepository.findById(id);
         } catch (Exception e){
-            return Optional.empty();
+            //Catch the corresponding exception with the DataAccesEx. class, if there's a problem with the id search
+            throw new DataAccessException("Cannot find the restaurant id", e);
         }
     }
 }

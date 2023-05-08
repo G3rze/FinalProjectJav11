@@ -28,7 +28,7 @@ public class ReservationService implements IReservationService {
             return reservationRepository.findById(id);
         } catch (Exception e){
             //Catch the corresponding exception with the DataAccesEx. class, if there's a problem with the id search
-            throw new DataAccessException("Can't find the reservation id", e);
+            throw new DataAccessException("Cannot find the reservation id", e);
         }
     }
 

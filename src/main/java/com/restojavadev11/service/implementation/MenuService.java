@@ -1,5 +1,6 @@
 package com.restojavadev11.service.implementation;
 
+import com.restojavadev11.exceptions.DataAccessException;
 import com.restojavadev11.service.IMenuService;
 import com.restojavadev11.entity.MenuEntity;
 import com.restojavadev11.repositories.MenuRepository;
@@ -27,7 +28,8 @@ public class MenuService implements IMenuService {
         try {
             return menuRepository.findById(id);
         } catch (Exception e){
-            return Optional.empty();
+            //Catch the corresponding exception with the DataAccesEx. class, if there's a problem with the id search
+            throw new DataAccessException("Cannot find the menu id", e);
         }
     }
 }
