@@ -4,10 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Collection;
-
 @Entity
-@Table(name = "restaurant", schema = "project", catalog = "")
+@Table(name = "restaurant", schema = "project")
 @Getter @Setter
 public class RestaurantEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +32,4 @@ public class RestaurantEntity {
     @Basic
     @Column(name = "r_schedule", nullable = false, length = 100)
     private String rSchedule;
-
-    @OneToMany(mappedBy = "restaurantByIdRestaurant")
-    private Collection<EmployeeEntity> employeesByIdRestaurant;
 }

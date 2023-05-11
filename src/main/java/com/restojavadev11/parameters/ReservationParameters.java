@@ -1,16 +1,19 @@
 package com.restojavadev11.parameters;
 
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.sql.Time;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Getter
 @Setter
+@NotBlank
 public class ReservationParameters {
-
-    private Date date;
+    @Future
+    private LocalDate date;
 
     private Time startTime;
 

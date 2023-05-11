@@ -3,6 +3,8 @@ package com.restojavadev11.service;
 import com.restojavadev11.entity.PromotionEntity;
 import com.restojavadev11.parameters.PromotionParameters;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 

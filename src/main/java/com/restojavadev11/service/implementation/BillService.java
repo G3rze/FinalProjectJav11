@@ -23,7 +23,7 @@ public class BillService  implements IBillService {
     }
 
     @Override
-    public Optional<BillEntity> getReserveById(Long id) {
+    public Optional<BillEntity> getBillById(Long id) {
         try {
             return billRepository.findById(id);
         } catch (Exception e){

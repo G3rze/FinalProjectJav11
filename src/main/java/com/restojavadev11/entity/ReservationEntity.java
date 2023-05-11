@@ -7,58 +7,44 @@ import java.sql.Date;
 import java.sql.Time;
 
 @Entity
-@Table(name = "reservation", schema = "project", catalog = "")
+@Table(name = "reservation", schema = "project")
 @Getter
 @Setter
 public class ReservationEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id_nReservation", nullable = false)
+    @Column(name = "id_n_reservation", nullable = false)
     private Long idNReservation;
 
     @Basic
-    @Column(name = "r_reservationDate", nullable = false)
+    @Column(name = "r_reservation_date", nullable = false)
     private Date rReservationDate;
 
     @Basic
-    @Column(name = "r_reservationStartTime", nullable = false)
+    @Column(name = "r_reservation_start_time", nullable = false)
     private Time rReservationStartTime;
 
     @Basic
-    @Column(name = "r_reservationEndTime", nullable = false)
+    @Column(name = "r_reservation_end_time", nullable = false)
     private Time rReservationEndTime;
 
     @Basic
-    @Column(name = "r_nPeople", nullable = false)
+    @Column(name = "r_n_people", nullable = false)
     private Integer rNPeople;
 
     @Basic
-    @Column(name = "r_nTable", nullable = false)
+    @Column(name = "r_n_table", nullable = false)
     private Integer rNTable;
 
-    @Basic
-    @Column(name = "r_idCustomer", nullable = false)
-    private Long rIdCustomer;
-
-    @Basic
-    @Column(name = "r_idBill", nullable = false)
-    private Long rIdBill;
-
-    @Basic
-    @Column(name = "r_idEmployee", nullable = false)
-    private Long rIdEmployee;
-
-
+    @JoinColumn(name = "r_id_customer")
     @ManyToOne
-    @JoinColumn(name = "r_idCustomer", referencedColumnName = "id_customer", nullable = false)
-    private CustomerEntity customerByRIdCustomer;
+    private CustomerEntity customerEntity;
 
+    @JoinColumn(name = "r_id_bill")
     @ManyToOne
-    @JoinColumn(name = "r_idBill", referencedColumnName = "id_bill", nullable = false)
-    private BillEntity billByRIdBill;
+    private BillEntity billEntity;
 
+    @JoinColumn(name = "r_id_employee")
     @ManyToOne
-    @JoinColumn(name = "r_idEmployee", referencedColumnName = "id_employee", nullable = false)
-    private EmployeeEntity employeeByRIdEmployee;
-
+    private EmployeeEntity employeeEntity;
 }

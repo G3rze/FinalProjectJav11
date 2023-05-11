@@ -1,14 +1,17 @@
 package com.restojavadev11.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Date;
-import java.util.Collection;
 
 @Entity
-@Table(name = "promotion", schema = "project", catalog = "")
+@Table(name = "promotion", schema = "project")
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 public class PromotionEntity {
@@ -18,25 +21,22 @@ public class PromotionEntity {
     private Long idPromotion;
 
     @Basic
-    @Column(name = "p_nameOfPromotion", nullable = false, length = 100)
-    private String pNameOfPromotion;
+    @Column(name = "p_name_of_promotion", nullable = false, length = 100)
+    private String pName;
 
     @Basic
     @Column(name = "p_description", nullable = false, length = 200)
     private String pDescription;
 
     @Basic
-    @Column(name = "p_discount", nullable = false, precision = 0)
-    private Double pDiscount;
+    @Column(name = "p_discount", nullable = false)
+    private double pDiscount;
 
     @Basic
-    @Column(name = "p_startDate", nullable = false)
+    @Column(name = "p_start_date", nullable = false)
     private Date pStartDate;
 
     @Basic
-    @Column(name = "p_finishDate", nullable = false)
+    @Column(name = "p_finish_date", nullable = false)
     private Date pFinishDate;
-
-    @OneToMany(mappedBy = "promotionByBIdPromotion")
-    private Collection<BillEntity> billsByIdPromotion;
 }

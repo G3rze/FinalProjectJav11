@@ -4,10 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Collection;
-
 @Entity
-@Table(name = "menu", schema = "project", catalog = "")
+@Table(name = "menu", schema = "project")
 @Getter
 @Setter
 public class MenuEntity {
@@ -25,9 +23,6 @@ public class MenuEntity {
     private String mDescription;
 
     @Basic
-    @Column(name = "m_price", nullable = false, precision = 0)
+    @Column(name = "m_price", nullable = false)
     private double mPrice;
-
-    @OneToMany(mappedBy = "menuByOIdMenu")
-    private Collection<OrderEntity> ordersByIdMenu;
 }

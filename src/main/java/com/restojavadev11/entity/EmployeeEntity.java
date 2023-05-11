@@ -5,10 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.sql.Date;
-import java.util.Collection;
 
 @Entity
-@Table(name = "employee", schema = "project", catalog = "")
+@Table(name = "employee", schema = "project")
 @Getter
 @Setter
 public class EmployeeEntity {
@@ -22,7 +21,7 @@ public class EmployeeEntity {
     private String eName;
 
     @Basic
-    @Column(name = "e_lastName", nullable = false, length = 100)
+    @Column(name = "e_lastname", nullable = false, length = 100)
     private String eLastName;
 
     @Basic
@@ -30,7 +29,7 @@ public class EmployeeEntity {
     private String ePosition;
 
     @Basic
-    @Column(name = "e_salary", nullable = false, precision = 0)
+    @Column(name = "e_salary", nullable = false)
     private double eSalary;
 
     @Basic
@@ -40,11 +39,4 @@ public class EmployeeEntity {
     @Basic
     @Column(name = "id_restaurant", nullable = false)
     private Long idRestaurant;
-
-    @ManyToOne
-    @JoinColumn(name = "id_restaurant", referencedColumnName = "id_restaurant", nullable = false)
-    private RestaurantEntity restaurantByIdRestaurant;
-
-    @OneToMany(mappedBy = "employeeByRIdEmployee")
-    private Collection<ReservationEntity> reservationsByIdEmployee;
 }
