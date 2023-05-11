@@ -26,11 +26,4 @@ public class OrderEntity {
     @Basic
     @Column(name = "o_idMenu", nullable = false)
     private Long oIdMenu;
-
-    @OneToMany(mappedBy = "orderByBIdOrder")
-    private Collection<BillEntity> billsByIdOrder;
-
-    @ManyToOne
-    @JoinColumn(name = "o_idMenu", referencedColumnName = "id_menu", nullable = false)
-    private MenuEntity menuByOIdMenu;
 }

@@ -35,7 +35,4 @@ public class CustomerEntity {
     @Basic
     @Column(name = "c_email", nullable = false, length = 100)
     private String cEmail;
-
-    @OneToMany(mappedBy = "customerByRIdCustomer")
-    private Collection<ReservationEntity> reservationsByIdCustomer;
 }

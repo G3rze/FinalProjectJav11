@@ -27,7 +27,4 @@ public class MenuEntity {
     @Basic
     @Column(name = "m_price", nullable = false, precision = 0)
     private double mPrice;
-
-    @OneToMany(mappedBy = "menuByOIdMenu")
-    private Collection<OrderEntity> ordersByIdMenu;
 }

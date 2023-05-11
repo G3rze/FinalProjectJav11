@@ -10,7 +10,7 @@ public interface IBillService {
 
     List<BillEntity> allBills();
 
-    Optional<BillEntity> getReserveById(Long id);
+    Optional<BillEntity> getBillById(Long id);
 
     BillEntity newBill(BillParameters billParameters);
 

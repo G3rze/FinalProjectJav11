@@ -34,7 +34,4 @@ public class RestaurantEntity {
     @Basic
     @Column(name = "r_schedule", nullable = false, length = 100)
     private String rSchedule;
-
-    @OneToMany(mappedBy = "restaurantByIdRestaurant")
-    private Collection<EmployeeEntity> employeesByIdRestaurant;
 }

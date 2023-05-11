@@ -38,14 +38,4 @@ public class BillEntity {
     @Column(name = "b_idPromotion", nullable = true)
     private Long bIdPromotion;
 
-    @ManyToOne
-    @JoinColumn(name = "b_idOrder", referencedColumnName = "id_order", nullable = false)
-    private OrderEntity orderByBIdOrder;
-
-    @ManyToOne
-    @JoinColumn(name = "b_idPromotion", referencedColumnName = "id_promotion")
-    private PromotionEntity promotionByBIdPromotion;
-
-    @OneToMany(mappedBy = "billByRIdBill")
-    private Collection<ReservationEntity> reservationsByIdBill;
 }

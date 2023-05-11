@@ -40,11 +40,4 @@ public class EmployeeEntity {
     @Basic
     @Column(name = "id_restaurant", nullable = false)
     private Long idRestaurant;
-
-    @ManyToOne
-    @JoinColumn(name = "id_restaurant", referencedColumnName = "id_restaurant", nullable = false)
-    private RestaurantEntity restaurantByIdRestaurant;
-
-    @OneToMany(mappedBy = "employeeByRIdEmployee")
-    private Collection<ReservationEntity> reservationsByIdEmployee;
 }

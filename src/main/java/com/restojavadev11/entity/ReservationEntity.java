@@ -47,18 +47,4 @@ public class ReservationEntity {
     @Basic
     @Column(name = "r_idEmployee", nullable = false)
     private Long rIdEmployee;
-
-
-    @ManyToOne
-    @JoinColumn(name = "r_idCustomer", referencedColumnName = "id_customer", nullable = false)
-    private CustomerEntity customerByRIdCustomer;
-
-    @ManyToOne
-    @JoinColumn(name = "r_idBill", referencedColumnName = "id_bill", nullable = false)
-    private BillEntity billByRIdBill;
-
-    @ManyToOne
-    @JoinColumn(name = "r_idEmployee", referencedColumnName = "id_employee", nullable = false)
-    private EmployeeEntity employeeByRIdEmployee;
-
 }

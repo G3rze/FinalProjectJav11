@@ -1,13 +1,19 @@
 package com.restojavadev11.parameters;
 
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
+import java.sql.Date;
+import java.time.LocalDate;
 
-@Setter
+@NotBlank
 @Getter
+@Setter
 public class PromotionParameters {
+
+
     private String name;
 
     private String description;
@@ -17,4 +23,11 @@ public class PromotionParameters {
     private Date startDate;
 
     private Date finishDate;
+
+    public void setStartDate(LocalDate localStartDate){
+        this.startDate = Date.valueOf(localStartDate);
+    }
+    public void setFinishDate(LocalDate localFinishDate){
+        this.finishDate = Date.valueOf(localFinishDate);
+    }
 }

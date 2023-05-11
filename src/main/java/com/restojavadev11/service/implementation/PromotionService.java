@@ -8,6 +8,8 @@ import com.restojavadev11.repositories.PromotionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,7 +36,15 @@ public class PromotionService implements IPromotionService {
 
     @Override
     public PromotionEntity newPromotion(PromotionParameters promotionParameters) {
-        return newPromotion(promotionParameters);
+        PromotionEntity newPromotionEntity = new PromotionEntity();
+
+        newPromotionEntity.setP_nameOfPromotion(promotionParameters.getName());
+        newPromotionEntity.setP_description(promotionParameters.getDescription());
+        newPromotionEntity.setP_discount(promotionParameters.getDiscount());
+        newPromotionEntity.setP_startDate(promotionParameters.getStartDate());
+        newPromotionEntity.setP_finishDate(promotionParameters.getFinishDate());
+
+        return newPromotionEntity;
     }
 
     @Override
