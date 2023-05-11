@@ -30,4 +30,15 @@ public class TableService implements ITableService {
             throw new DataAccessException("Cannot find the table id", e);
         }
     }
+
+    @Override
+    public void inserTable(TableEntity table) {
+        try {
+            tableRepostory.save(table);
+        }catch (Exception e){
+            throw new DataAccessException("Cannot insert table to database", e);
+        }
+    }
+
+
 }

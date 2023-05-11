@@ -11,4 +11,6 @@ public interface ITableService {
 
     Optional<TableEntity> getTableById(long id);
 
+    void inserTable(TableEntity table);
+
 }
