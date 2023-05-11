@@ -1,40 +1,42 @@
 package com.restojavadev11.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Date;
-import java.time.LocalDate;
-import java.util.Collection;
 
 @Entity
-@Table(name = "promotion", schema = "project", catalog = "")
+@Table(name = "promotion", schema = "project")
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 public class PromotionEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-   // @Column(name = "id_promotion", nullable = false)
+    @Column(name = "id_promotion", nullable = false)
     private Long idPromotion;
 
     @Basic
-  //  @Column(name = "p_nameOfPromotion", nullable = false, length = 100)
-    private String p_nameOfPromotion;
+    @Column(name = "p_name_of_promotion", nullable = false, length = 100)
+    private String pName;
 
     @Basic
-   // @Column(name = "p_description", nullable = false, length = 200)
-    private String p_description;
+    @Column(name = "p_description", nullable = false, length = 200)
+    private String pDescription;
 
     @Basic
-   // @Column(name = "p_discount", nullable = false, precision = 0)
-    private Double p_discount;
+    @Column(name = "p_discount", nullable = false)
+    private double pDiscount;
 
     @Basic
-   // @Column(name = "p_startDate", nullable = false)
-    private Date p_startDate;
+    @Column(name = "p_start_date", nullable = false)
+    private Date pStartDate;
 
     @Basic
-    //@Column(name = "p_finishDate", nullable = false)
-    private Date p_finishDate;
+    @Column(name = "p_finish_date", nullable = false)
+    private Date pFinishDate;
 }

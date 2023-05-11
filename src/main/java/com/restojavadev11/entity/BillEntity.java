@@ -1,15 +1,19 @@
 package com.restojavadev11.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Date;
 import java.sql.Time;
-import java.util.Collection;
+
 
 @Entity
-@Table(name = "bill", schema = "project", catalog = "")
+@Table(name = "bill", schema = "project")
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 public class BillEntity {
@@ -27,15 +31,15 @@ public class BillEntity {
     private Time bTime;
 
     @Basic
-    @Column(name = "b_total", nullable = false, precision = 0)
+    @Column(name = "b_total", nullable = false)
     private double bTotal;
 
-    @Basic
-    @Column(name = "b_idOrder", nullable = false)
-    private Long bIdOrder;
+    @JoinColumn(name = "b_id_order")
+    @ManyToOne
+    private OrderEntity orderEntity;
 
-    @Basic
-    @Column(name = "b_idPromotion", nullable = true)
-    private Long bIdPromotion;
+    @JoinColumn(name = "b_id_promotion")
+    @ManyToOne
+    private PromotionEntity promotionEntity;
 
 }

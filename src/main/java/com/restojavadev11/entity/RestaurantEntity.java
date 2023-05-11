@@ -4,10 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Collection;
-
 @Entity
-@Table(name = "restaurant", schema = "project", catalog = "")
+@Table(name = "restaurant", schema = "project")
 @Getter @Setter
 public class RestaurantEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -6,13 +6,13 @@ import lombok.Setter;
 
 
 @Entity
-@Table(name = "table", schema = "project", catalog = "")
+@Table(name = "table", schema = "project")
 @Getter
 @Setter
 public class TableEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id_nTable", nullable = false)
+    @Column(name = "id_n_table", nullable = false)
     private Long idNTable;
 
     @Basic

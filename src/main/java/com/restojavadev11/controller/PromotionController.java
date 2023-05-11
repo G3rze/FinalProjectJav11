@@ -3,13 +3,9 @@ package com.restojavadev11.controller;
 import com.restojavadev11.entity.PromotionEntity;
 import com.restojavadev11.parameters.PromotionParameters;
 import com.restojavadev11.service.IPromotionService;
-import com.restojavadev11.service.implementation.PromotionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -31,9 +27,9 @@ public class PromotionController {
 
     @PostMapping("/create")
     public void createPromotion(@RequestBody PromotionParameters promotionParameters){
+        PromotionEntity newPromotionEntity = promotionService.newPromotion(promotionParameters);
 
-        PromotionEntity newPromotion = promotionService.newPromotion(promotionParameters);
-        promotionService.updatePromotion(newPromotion);
+        promotionService.updatePromotion(newPromotionEntity);
     }
 
 }

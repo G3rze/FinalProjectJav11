@@ -1,13 +1,15 @@
 package com.restojavadev11.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Collection;
-
 @Entity
-@Table(name = "customer", schema = "project", catalog = "")
+@Table(name = "customer", schema = "project")
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 public class CustomerEntity {
@@ -21,7 +23,7 @@ public class CustomerEntity {
     private String cName;
 
     @Basic
-    @Column(name = "c_lastName", nullable = false, length = 100)
+    @Column(name = "c_lastname", nullable = false, length = 100)
     private String cLastName;
 
     @Basic

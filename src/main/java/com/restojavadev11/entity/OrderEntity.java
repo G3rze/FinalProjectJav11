@@ -4,10 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Collection;
-
 @Entity
-@Table(name = "order", schema = "project", catalog = "")
+@Table(name = "menu_order", schema = "project")
 @Getter @Setter
 public class OrderEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,10 +18,10 @@ public class OrderEntity {
     private String oType;
 
     @Basic
-    @Column(name = "o_total", nullable = false, precision = 0)
+    @Column(name = "o_total", nullable = false)
     private double oTotal;
 
-    @Basic
-    @Column(name = "o_idMenu", nullable = false)
-    private Long oIdMenu;
+    @JoinColumn(name = "o_id_menu")
+    @ManyToOne
+    private MenuEntity menuEntity;
 }
