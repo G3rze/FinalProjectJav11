@@ -30,7 +30,7 @@ public class OrderService implements IOrderService {
     @Override
     public Optional<OrderEntity> getOrderById(long id) {
         try {
-            return orderRepository.findById(id);
+            return Optional.ofNullable(orderRepository.findById(id));
         } catch (Exception e){
             //Catch the corresponding exception with the DataAccesEx. class, if there's a problem with the id search
             throw new DataAccessException("Cannot find the order id", e);
@@ -42,11 +42,6 @@ public class OrderService implements IOrderService {
         OrderEntity newOrder = new OrderEntity();
 
         MenuEntity menu = menuRepository.findById(orderParameters.getIdMenu());
-
-        System.out.println(orderParameters.getIdMenu());
-        System.out.println(menu);
-
-
 
         newOrder.setOType(orderParameters.getType());
         newOrder.setOTotal(orderParameters.getTotal());

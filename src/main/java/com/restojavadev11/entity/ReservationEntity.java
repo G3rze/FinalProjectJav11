@@ -17,7 +17,7 @@ import java.sql.Time;
 public class ReservationEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id_n_reservation", nullable = false)
+    @Column(name = "id_reservation", nullable = false)
     private Long idNReservation;
 
     @Basic
@@ -39,6 +39,10 @@ public class ReservationEntity {
     @Basic
     @Column(name = "r_n_table", nullable = false)
     private Integer rNTable;
+
+    @Basic
+    @Column(name = "r_status")
+    private Character status;
 
     @JoinColumn(name = "r_id_customer")
     @ManyToOne

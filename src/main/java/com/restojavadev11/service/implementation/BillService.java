@@ -1,7 +1,13 @@
 package com.restojavadev11.service.implementation;
 
+import com.restojavadev11.entity.MenuEntity;
+import com.restojavadev11.entity.OrderEntity;
+import com.restojavadev11.entity.PromotionEntity;
 import com.restojavadev11.exceptions.DataAccessException;
 import com.restojavadev11.parameters.BillParameters;
+import com.restojavadev11.repositories.MenuRepository;
+import com.restojavadev11.repositories.OrderRepository;
+import com.restojavadev11.repositories.PromotionRepository;
 import com.restojavadev11.service.IBillService;
 import com.restojavadev11.entity.BillEntity;
 import com.restojavadev11.repositories.BillRepository;
@@ -16,6 +22,10 @@ public class BillService  implements IBillService {
 
     @Autowired
     private BillRepository billRepository;
+    @Autowired
+    private OrderRepository orderRepository;
+    @Autowired
+    private PromotionRepository promotionRepository;
 
     @Override
     public List<BillEntity> allBills() {
@@ -34,8 +44,24 @@ public class BillService  implements IBillService {
 
     @Override
     public BillEntity newBill(BillParameters billParameters) {
+        BillEntity newBill = new BillEntity();
+        long idOrder = billParameters.getIdOrder();
+        OrderEntity order = orderRepository.findById(idOrder);
 
-        return newBill(billParameters);
+        if (billParameters.getIdPromotion() != null) {
+            long idPromotion = billParameters.getIdPromotion();
+            PromotionEntity promotion = promotionRepository.findById(idPromotion);
+            newBill.setPromotionEntity(promotion);
+        }
+        newBill.setOrderEntity(order);
+        newBill.setBTime(billParameters.getTime());
+        newBill.setBDate(billParameters.getDate());
+        newBill.setBTotal(billParameters.getTotal());
+
+
+
+
+        return newBill;
     }
 
     @Override
