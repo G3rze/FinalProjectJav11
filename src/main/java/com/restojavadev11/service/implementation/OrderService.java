@@ -1,7 +1,9 @@
 package com.restojavadev11.service.implementation;
 
+import com.restojavadev11.entity.MenuEntity;
 import com.restojavadev11.exceptions.DataAccessException;
 import com.restojavadev11.parameters.OrderParameters;
+import com.restojavadev11.repositories.MenuRepository;
 import com.restojavadev11.service.IOrderService;
 import com.restojavadev11.entity.OrderEntity;
 import com.restojavadev11.repositories.OrderRepository;
@@ -16,6 +18,9 @@ public class OrderService implements IOrderService {
 
     @Autowired
     private OrderRepository orderRepository;
+
+    @Autowired
+    private MenuRepository menuRepository;
 
     @Override
     public List<OrderEntity> allOrders() {
@@ -34,7 +39,21 @@ public class OrderService implements IOrderService {
 
     @Override
     public OrderEntity newOrder(OrderParameters orderParameters) {
-        return newOrder(orderParameters);
+        OrderEntity newOrder = new OrderEntity();
+
+        MenuEntity menu = menuRepository.findById(orderParameters.getIdMenu());
+
+        System.out.println(orderParameters.getIdMenu());
+        System.out.println(menu);
+
+
+
+        newOrder.setOType(orderParameters.getType());
+        newOrder.setOTotal(orderParameters.getTotal());
+        newOrder.setMenuEntity(menu);
+
+        return orderRepository.save(newOrder);
+
     }
 
     @Override

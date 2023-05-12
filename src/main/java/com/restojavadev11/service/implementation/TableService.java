@@ -1,6 +1,7 @@
 package com.restojavadev11.service.implementation;
 
 import com.restojavadev11.exceptions.DataAccessException;
+import com.restojavadev11.parameters.TableParameters;
 import com.restojavadev11.service.ITableService;
 import com.restojavadev11.entity.TableEntity;
 import com.restojavadev11.repositories.TableRepostory;
@@ -32,13 +33,25 @@ public class TableService implements ITableService {
     }
 
     @Override
-    public void inserTable(TableEntity table) {
+    public TableEntity createTable(TableParameters tableParameters) {
         try {
-            tableRepostory.save(table);
+            TableEntity newTable = new TableEntity();
+
+            newTable.setTCapacity(tableParameters.getCapacity());
+
+            return newTable;
         }catch (Exception e){
             throw new DataAccessException("Cannot insert table to database", e);
         }
     }
 
+    @Override
+    public void updateTable(TableEntity newTable) {
+        tableRepostory.save(newTable);
+    }
 
+    @Override
+    public void deleteTable(long id) {
+        tableRepostory.deleteById(id);
+    }
 }

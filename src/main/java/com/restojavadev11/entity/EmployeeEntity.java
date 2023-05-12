@@ -1,13 +1,17 @@
 package com.restojavadev11.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Date;
 
 @Entity
 @Table(name = "employee", schema = "project")
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 public class EmployeeEntity {

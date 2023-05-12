@@ -1,11 +1,15 @@
 package com.restojavadev11.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name = "restaurant", schema = "project")
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter @Setter
 public class RestaurantEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)

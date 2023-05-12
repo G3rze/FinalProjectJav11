@@ -1,5 +1,6 @@
 package com.restojavadev11.parameters;
 
+import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
@@ -18,6 +19,7 @@ public class PromotionParameters {
 
     private String description;
 
+    @DecimalMax("2")
     private double discount;
 
     private Date startDate;

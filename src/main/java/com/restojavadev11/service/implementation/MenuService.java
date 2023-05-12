@@ -26,7 +26,7 @@ public class MenuService implements IMenuService {
     public Optional<MenuEntity> getMenuById(long id) {
 
         try {
-            return menuRepository.findById(id);
+            return Optional.ofNullable(menuRepository.findById(id));
         } catch (Exception e){
             //Catch the corresponding exception with the DataAccesEx. class, if there's a problem with the id search
             throw new DataAccessException("Cannot find the menu id", e);
