@@ -34,12 +34,12 @@ public class BillEntity {
     @Column(name = "b_total", nullable = false)
     private double bTotal;
 
-    @JoinColumn(name = "b_id_order")
-    @ManyToOne
-    private OrderEntity orderEntity;
-
     @JoinColumn(name = "b_id_promotion")
     @ManyToOne
     private PromotionEntity promotionEntity;
+
+    @JoinColumn(name = "b_id_reservation")
+    @ManyToOne
+    private ReservationEntity reservation;
 
 }

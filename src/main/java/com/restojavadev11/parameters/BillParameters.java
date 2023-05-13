@@ -19,7 +19,7 @@ public class BillParameters {
     @DecimalMax("2")
     private double total;
     @NotBlank
-    private Long idOrder;
+    private Long idReservation;
     private Long idPromotion;
 
     void setDate(LocalDate localDate){
