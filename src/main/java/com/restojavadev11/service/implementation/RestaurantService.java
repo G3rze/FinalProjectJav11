@@ -24,7 +24,7 @@ public class RestaurantService implements IRestaurantService {
     @Override
     public Optional<RestaurantEntity> getRestaurantById(long id) {
         try {
-            return restaurantRepository.findById(id);
+            return Optional.ofNullable(restaurantRepository.findById(id));
         } catch (Exception e){
             //Catch the corresponding exception with the DataAccesEx. class, if there's a problem with the id search
             throw new DataAccessException("Cannot find the restaurant id", e);
