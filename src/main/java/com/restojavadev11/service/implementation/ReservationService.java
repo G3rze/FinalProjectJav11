@@ -25,7 +25,7 @@ public class ReservationService implements IReservationService {
     @Override
     public Optional<ReservationEntity> getReservationById(long id) {
         try {
-            return reservationRepository.findById(id);
+            return Optional.ofNullable(reservationRepository.findById(id));
         } catch (Exception e){
             //Catch the corresponding exception with the DataAccesEx. class, if there's a problem with the id search
             throw new DataAccessException("Cannot find the reservation id", e);

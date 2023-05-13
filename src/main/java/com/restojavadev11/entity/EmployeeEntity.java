@@ -1,13 +1,17 @@
 package com.restojavadev11.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Date;
 
 @Entity
 @Table(name = "employee", schema = "project")
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 public class EmployeeEntity {
@@ -36,7 +40,13 @@ public class EmployeeEntity {
     @Column(name = "e_date_of_hire", nullable = false)
     private Date eDateOfHire;
 
+    @JoinColumn(name = "id_restaurant")
+    @OneToOne
+    private RestaurantEntity restaurant;
+
     @Basic
-    @Column(name = "id_restaurant", nullable = false)
-    private Long idRestaurant;
+    @Column(name = "e_status", nullable = false)
+    private Boolean status;
+
+
 }

@@ -1,19 +1,23 @@
 package com.restojavadev11.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.sql.Date;
 import java.sql.Time;
 
 @Entity
 @Table(name = "reservation", schema = "project")
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 public class ReservationEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id_n_reservation", nullable = false)
+    @Column(name = "id_reservation", nullable = false)
     private Long idNReservation;
 
     @Basic
@@ -25,7 +29,7 @@ public class ReservationEntity {
     private Time rReservationStartTime;
 
     @Basic
-    @Column(name = "r_reservation_end_time", nullable = false)
+    @Column(name = "r_reservation_end_time")
     private Time rReservationEndTime;
 
     @Basic
@@ -36,13 +40,13 @@ public class ReservationEntity {
     @Column(name = "r_n_table", nullable = false)
     private Integer rNTable;
 
-    @JoinColumn(name = "r_id_customer")
+    @Basic
+    @Column(name = "r_status", nullable = false)
+    private Character status;
+
+    @JoinColumn(name = "r_id_customer", nullable = false)
     @ManyToOne
     private CustomerEntity customerEntity;
-
-    @JoinColumn(name = "r_id_bill")
-    @ManyToOne
-    private BillEntity billEntity;
 
     @JoinColumn(name = "r_id_employee")
     @ManyToOne

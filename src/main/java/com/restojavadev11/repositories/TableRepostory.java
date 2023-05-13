@@ -5,4 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 public interface TableRepostory extends JpaRepository<TableEntity, Long> {
+
+    TableEntity findById(long id);
+
 }

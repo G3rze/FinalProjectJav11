@@ -1,10 +1,10 @@
 package com.restojavadev11.service.implementation;
 
+import com.restojavadev11.entity.*;
 import com.restojavadev11.exceptions.DataAccessException;
 import com.restojavadev11.parameters.BillParameters;
+import com.restojavadev11.repositories.*;
 import com.restojavadev11.service.IBillService;
-import com.restojavadev11.entity.BillEntity;
-import com.restojavadev11.repositories.BillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +16,10 @@ public class BillService  implements IBillService {
 
     @Autowired
     private BillRepository billRepository;
+    @Autowired
+    private ReservationRepository reservationRepository;
+    @Autowired
+    private PromotionRepository promotionRepository;
 
     @Override
     public List<BillEntity> allBills() {
@@ -34,8 +38,24 @@ public class BillService  implements IBillService {
 
     @Override
     public BillEntity newBill(BillParameters billParameters) {
+        BillEntity newBill = new BillEntity();
+        long idReservation = billParameters.getIdReservation();
+        ReservationEntity reservation = reservationRepository.findById(idReservation);
 
-        return newBill(billParameters);
+        if (billParameters.getIdPromotion() != null) {
+            long idPromotion = billParameters.getIdPromotion();
+            PromotionEntity promotion = promotionRepository.findById(idPromotion);
+            newBill.setPromotionEntity(promotion);
+        }
+        newBill.setReservation(reservation);
+        newBill.setBTime(billParameters.getTime());
+        newBill.setBDate(billParameters.getDate());
+        newBill.setBTotal(billParameters.getTotal());
+
+
+
+
+        return newBill;
     }
 
     @Override
