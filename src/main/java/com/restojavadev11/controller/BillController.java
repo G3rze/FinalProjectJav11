@@ -34,6 +34,6 @@ public class BillController {
 
     @DeleteMapping("/deleteById")
     public void deleteBill(@RequestParam("id") long id){
-        deleteBill(id);
+        billService.deleteBill(id);
     }
 }
