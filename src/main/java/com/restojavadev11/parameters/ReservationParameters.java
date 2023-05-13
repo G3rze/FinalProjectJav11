@@ -29,4 +29,6 @@ public class ReservationParameters {
 
     private long idEmployee;
 
+    private char status;
+
 }

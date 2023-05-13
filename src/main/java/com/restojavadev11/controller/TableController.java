@@ -39,7 +39,7 @@ public class TableController {
             tableService.updateTable(newTable);
 
             HttpHeaders responseHeader = new HttpHeaders();
-            responseHeader.set("location", "/api/tables" + "/" + newTable.getIdNTable());
+            responseHeader.set("location", "/tables/getById" + "?id=" + newTable.getIdNTable());
             new ResponseEntity(responseHeader, HttpStatus.CREATED);
         }catch (Exception e){
             new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
