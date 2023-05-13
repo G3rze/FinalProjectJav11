@@ -25,7 +25,7 @@ public class TableService implements ITableService {
     @Override
     public Optional<TableEntity> getTableById(long id) {
         try {
-            return tableRepostory.findById(id);
+            return Optional.ofNullable(tableRepostory.findById(id));
         } catch (Exception e){
             //Catch the corresponding exception with the DataAccesEx. class, if there's a problem with the id search
             throw new DataAccessException("Cannot find the table id", e);

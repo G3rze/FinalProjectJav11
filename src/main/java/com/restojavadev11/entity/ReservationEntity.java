@@ -29,7 +29,7 @@ public class ReservationEntity {
     private Time rReservationStartTime;
 
     @Basic
-    @Column(name = "r_reservation_end_time", nullable = false)
+    @Column(name = "r_reservation_end_time")
     private Time rReservationEndTime;
 
     @Basic
@@ -41,16 +41,12 @@ public class ReservationEntity {
     private Integer rNTable;
 
     @Basic
-    @Column(name = "r_status")
+    @Column(name = "r_status", nullable = false)
     private Character status;
 
-    @JoinColumn(name = "r_id_customer")
+    @JoinColumn(name = "r_id_customer", nullable = false)
     @ManyToOne
     private CustomerEntity customerEntity;
-
-    @JoinColumn(name = "r_id_bill")
-    @ManyToOne
-    private BillEntity billEntity;
 
     @JoinColumn(name = "r_id_employee")
     @ManyToOne

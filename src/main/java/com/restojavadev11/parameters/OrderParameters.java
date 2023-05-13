@@ -13,4 +13,5 @@ public class OrderParameters {
     @DecimalMax("2")
     private double total;
     private long idMenu;
+    private long idBill;
 }

@@ -1,16 +1,10 @@
 package com.restojavadev11.service.implementation;
 
-import com.restojavadev11.entity.MenuEntity;
-import com.restojavadev11.entity.OrderEntity;
-import com.restojavadev11.entity.PromotionEntity;
+import com.restojavadev11.entity.*;
 import com.restojavadev11.exceptions.DataAccessException;
 import com.restojavadev11.parameters.BillParameters;
-import com.restojavadev11.repositories.MenuRepository;
-import com.restojavadev11.repositories.OrderRepository;
-import com.restojavadev11.repositories.PromotionRepository;
+import com.restojavadev11.repositories.*;
 import com.restojavadev11.service.IBillService;
-import com.restojavadev11.entity.BillEntity;
-import com.restojavadev11.repositories.BillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +17,7 @@ public class BillService  implements IBillService {
     @Autowired
     private BillRepository billRepository;
     @Autowired
-    private OrderRepository orderRepository;
+    private ReservationRepository reservationRepository;
     @Autowired
     private PromotionRepository promotionRepository;
 
@@ -45,15 +39,15 @@ public class BillService  implements IBillService {
     @Override
     public BillEntity newBill(BillParameters billParameters) {
         BillEntity newBill = new BillEntity();
-        long idOrder = billParameters.getIdOrder();
-        OrderEntity order = orderRepository.findById(idOrder);
+        long idReservation = billParameters.getIdReservation();
+        ReservationEntity reservation = reservationRepository.findById(idReservation);
 
         if (billParameters.getIdPromotion() != null) {
             long idPromotion = billParameters.getIdPromotion();
             PromotionEntity promotion = promotionRepository.findById(idPromotion);
             newBill.setPromotionEntity(promotion);
         }
-        newBill.setOrderEntity(order);
+        newBill.setReservation(reservation);
         newBill.setBTime(billParameters.getTime());
         newBill.setBDate(billParameters.getDate());
         newBill.setBTotal(billParameters.getTotal());

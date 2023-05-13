@@ -25,8 +25,6 @@ public class ReservationParameters {
 
     private long idCustomer;
 
-    private long idBill;
-
     private long idEmployee;
 
     private char status;

@@ -21,11 +21,11 @@ public class ReservationTableEntity {
     private ReservationTableId rtId;
 
     @ManyToOne
-    @JoinColumn(name = "id_reservation")
+    @JoinColumn(name = "id_reservation", nullable = false)
     private ReservationEntity reservation;
 
     @ManyToOne
-    @JoinColumn(name = "id_table")
+    @JoinColumn(name = "id_table", nullable = false)
     private TableEntity table;
 
     @Basic
