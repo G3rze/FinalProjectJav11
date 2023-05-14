@@ -52,9 +52,6 @@ public class BillService  implements IBillService {
         newBill.setBDate(billParameters.getDate());
         newBill.setBTotal(billParameters.getTotal());
 
-
-
-
         return newBill;
     }
 
