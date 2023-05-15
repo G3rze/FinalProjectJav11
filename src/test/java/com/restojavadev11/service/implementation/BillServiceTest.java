@@ -75,7 +75,7 @@ class BillServiceTest {
         billParameters.setIdPromotion(idPromotion);
         billParameters.setTime(Time.valueOf("12:00:00"));
         billParameters.setDate(Date.valueOf("2023-05-15").toLocalDate());
-        billParameters.setTotal(100.0);
+
 
         BillEntity result = billService.newBill(billParameters);
 
@@ -83,7 +83,6 @@ class BillServiceTest {
         assertEquals(promotion, result.getPromotionEntity());
         assertEquals(Time.valueOf("12:00:00"), result.getBTime());
         assertEquals(Date.valueOf("2023-05-15"), result.getBDate());
-        assertEquals(100.0, result.getBTotal());
     }
 
     @Test

@@ -14,6 +14,8 @@ public interface IBillService {
 
     BillEntity newBill(BillParameters billParameters);
 
+    void setBillTotal(long id);
+
     void deleteBill(long id);
 
     void updateBill(BillEntity newBill);

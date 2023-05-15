@@ -31,7 +31,7 @@ public class BillEntity {
     private Time bTime;
 
     @Basic
-    @Column(name = "b_total", nullable = false)
+    @Column(name = "b_total")
     private double bTotal;
 
     @JoinColumn(name = "b_id_promotion")

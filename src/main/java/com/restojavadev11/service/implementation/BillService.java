@@ -53,6 +53,14 @@ public class BillService  implements IBillService {
         newBill.setBTime(billParameters.getTime());
         newBill.setBDate(billParameters.getDate());
 
+        return newBill;
+    }
+
+    @Override
+    public void setBillTotal(long id){
+
+        BillEntity newBill = billRepository.findById(id);
+
         List<OrderEntity> orderList = orderRepository.findAllByOrBill(newBill.getIdBill());
 
         float total = 0;
@@ -65,7 +73,7 @@ public class BillService  implements IBillService {
 
         newBill.setBTotal(total);
 
-        return newBill;
+        updateBill(newBill);
     }
 
     @Override

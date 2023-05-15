@@ -36,4 +36,9 @@ public class BillController {
         billService.updateBill(newBill);
     }
 
+    @PostMapping("/setTotal{id}")
+    public void setBillTotal(@RequestParam ("id") long id){
+        billService.setBillTotal(id);
+    }
+
 }
