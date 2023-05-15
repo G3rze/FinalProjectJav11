@@ -5,15 +5,16 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.sql.Date;
 import java.sql.Time;
-import java.time.LocalDate;
 
 @Getter
 @Setter
 @NotBlank
 public class ReservationParameters {
+    private Long id;
     @Future
-    private LocalDate date;
+    private Date date;
 
     private Time startTime;
 
