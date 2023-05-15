@@ -20,6 +20,8 @@ public class BillService  implements IBillService {
     private ReservationRepository reservationRepository;
     @Autowired
     private PromotionRepository promotionRepository;
+    @Autowired
+    private OrderRepository orderRepository;
 
     @Override
     public List<BillEntity> allBills() {
@@ -50,7 +52,18 @@ public class BillService  implements IBillService {
         newBill.setReservation(reservation);
         newBill.setBTime(billParameters.getTime());
         newBill.setBDate(billParameters.getDate());
-        newBill.setBTotal(billParameters.getTotal());
+
+        List<OrderEntity> orderList = orderRepository.findAllByOrBill(newBill.getIdBill());
+
+        float total = 0;
+
+        for (OrderEntity orderEntity : orderList) {
+            MenuEntity menu = orderEntity.getMenuEntity();
+
+            total += menu.getMPrice();
+        }
+
+        newBill.setBTotal(total);
 
         return newBill;
     }

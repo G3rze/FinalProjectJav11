@@ -16,8 +16,6 @@ public class BillParameters {
     private Date date;
     @NotBlank
     private Time time;
-    @DecimalMax("2")
-    private double total;
     @NotBlank
     private Long idReservation;
     private Long idPromotion;
@@ -26,8 +24,4 @@ public class BillParameters {
         this.date = Date.valueOf(localDate);
     }
 
-
-    public void  setTotal(double dTotal){
-        this.total = Math.round(dTotal);
-    }
 }
