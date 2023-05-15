@@ -1,7 +1,12 @@
 package com.restojavadev11.service.implementation;
 
 import com.restojavadev11.entity.BillEntity;
+import com.restojavadev11.entity.PromotionEntity;
+import com.restojavadev11.entity.ReservationEntity;
+import com.restojavadev11.parameters.BillParameters;
 import com.restojavadev11.repositories.BillRepository;
+import com.restojavadev11.repositories.PromotionRepository;
+import com.restojavadev11.repositories.ReservationRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -14,10 +19,14 @@ import java.util.Arrays;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class BillServiceTest {
 
+    @Mock
+    private ReservationRepository reservationRepository;
+    @Mock
+    private PromotionRepository promotionRepository;
     @Mock
     private BillRepository billRepository;
     @InjectMocks
@@ -49,5 +58,43 @@ class BillServiceTest {
         Optional<BillEntity> actualBillEntity = billService.getBillById(billId);
 
         assertEquals(billEntity, actualBillEntity.get());
+    }
+
+    @Test
+    void newBill() {
+        long idReservation = 1;
+        ReservationEntity reservation = new ReservationEntity();
+        when(reservationRepository.findById(idReservation)).thenReturn(reservation);
+
+        long idPromotion = 1;
+        PromotionEntity promotion = new PromotionEntity();
+        when(promotionRepository.findById(idPromotion)).thenReturn(promotion);
+
+        BillParameters billParameters = new BillParameters();
+        billParameters.setIdReservation(idReservation);
+        billParameters.setIdPromotion(idPromotion);
+        billParameters.setTime(Time.valueOf("12:00:00"));
+        billParameters.setDate(Date.valueOf("2023-05-15").toLocalDate());
+        billParameters.setTotal(100.0);
+
+        BillEntity result = billService.newBill(billParameters);
+
+        assertEquals(reservation, result.getReservation());
+        assertEquals(promotion, result.getPromotionEntity());
+        assertEquals(Time.valueOf("12:00:00"), result.getBTime());
+        assertEquals(Date.valueOf("2023-05-15"), result.getBDate());
+        assertEquals(100.0, result.getBTotal());
+    }
+
+    @Test
+    void updateBill() {
+        billEntity.setIdBill(Long.valueOf(1));
+        billEntity.setBDate(Date.valueOf("2023-05-12"));
+        billEntity.setBTime(Time.valueOf("21:30:00"));
+        billEntity.setBTotal(30);
+
+        billService.updateBill(billEntity);
+
+        verify(billRepository, times(1)).save(billEntity);
     }
 }
