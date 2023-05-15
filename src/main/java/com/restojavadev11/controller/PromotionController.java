@@ -32,7 +32,7 @@ public class PromotionController {
     }
 
     @PostMapping("/create")
-    @PreAuthorize("hasAnyRole('WORKER', 'ADMIN') or hasAnyAuthority('SCOPE_ROLE_WORKER','SCOPE_ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ADMIN') or hasAnyAuthority('SCOPE_ROLE_ADMIN')")
     public void insertPromotion(@RequestBody PromotionParameters promotionParameters){
         PromotionEntity newPromotionEntity = promotionService.newPromotion(promotionParameters);
         promotionService.updatePromotion(newPromotionEntity);
