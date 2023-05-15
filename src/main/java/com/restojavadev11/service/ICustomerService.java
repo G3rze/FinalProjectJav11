@@ -12,7 +12,7 @@ public interface ICustomerService {
 
     Optional<CustomerEntity> getCustomerById(long id);
 
-    CustomerEntity newCustomer(CustomerParameters customerParameters);
+    void createCustomer(CustomerParameters customerParameters);
 
     void deleteCustomer(long id);
 

@@ -20,6 +20,7 @@ public interface IReservationService {
     void cancelReservation(ReservationParameters reservationParameters);
     void closeReservation(ReservationParameters reservationParameters);
     void claimReservation(ReservationParameters reservationParameters);
+    Long getOwnReservations();
 
 
 }

@@ -3,7 +3,10 @@ package com.restojavadev11.controller;
 import com.restojavadev11.entity.ReservationEntity;
 import com.restojavadev11.parameters.ReservationParameters;
 import com.restojavadev11.service.IReservationService;
+import com.restojavadev11.service.IUserService;
+import jakarta.annotation.security.RolesAllowed;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,13 +17,17 @@ public class ReservationController {
 
     @Autowired
     private IReservationService reservationService;
+    @Autowired
+    private IUserService userService;
 
+    @RolesAllowed({"ADMIN"})
     @GetMapping("getAll")
     public List<ReservationEntity> getAllReservations(){
         return reservationService.allReservations();
     }
 
     @PostMapping("createReservation")
+    @PreAuthorize("hasRole('CUSTOMER') or hasAuthority('SCOPE_ROLE_CUSTOMER')")
     public void createReservation(@RequestBody ReservationParameters reservationParameters){
         reservationService.newReservation(reservationParameters);
     }
@@ -48,4 +55,11 @@ public class ReservationController {
     public void claimReservation(@RequestBody ReservationParameters reservationParameters){
         reservationService.claimReservation(reservationParameters);
     }
+
+    @GetMapping("reservations")
+    @PreAuthorize("hasRole('CUSTOMER') or hasAuthority('SCOPE_ROLE_CUSTOMER')")
+    public Long getOwnReservations(){
+        return reservationService.getOwnReservations();
+    }
+
 }
