@@ -34,7 +34,7 @@ public class CustomerEntity {
     @Column(name = "c_phone", nullable = false, length = 9)
     private String cPhone;
 
-    @Basic
-    @Column(name = "c_email", nullable = false, length = 100)
-    private String cEmail;
+    @JoinColumn(name = "user_id")
+    @OneToOne
+    private UserEntity user;
 }

@@ -26,6 +26,11 @@ public class EmployeeController {
         return employeeService.getEmployeeById(id);
     }
 
+    @GetMapping("/myInfo")
+    public Optional<EmployeeEntity> getMyOwn(long myId){
+        return employeeService.getEmployeeById(myId);
+    }
+
     @PostMapping("/create")
     public void insertEmployee(@RequestBody EmployeeParameters employeeParameters){
         EmployeeEntity employee = employeeService.newEmployee(employeeParameters);
