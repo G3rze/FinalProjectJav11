@@ -2,7 +2,6 @@ package com.restojavadev11.controller;
 
 import com.restojavadev11.entity.EmployeeEntity;
 import com.restojavadev11.parameters.EmployeeParameters;
-import com.restojavadev11.repositories.EmployeeRepository;
 import com.restojavadev11.service.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -33,8 +32,7 @@ public class EmployeeController {
 
     @PostMapping("/create")
     public void insertEmployee(@RequestBody EmployeeParameters employeeParameters){
-        EmployeeEntity employee = employeeService.newEmployee(employeeParameters);
-        employeeService.updateEmployee(employee);
+        employeeService.createEmployee(employeeParameters);
     }
 
     @PostMapping("/changeStatusOf{id}To{status}")

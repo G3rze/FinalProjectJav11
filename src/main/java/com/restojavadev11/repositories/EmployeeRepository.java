@@ -14,5 +14,5 @@ public interface EmployeeRepository extends JpaRepository<EmployeeEntity, Long> 
     @Procedure("create_new_employee")
     void createNewEmployee(String in_email, String in_password, String in_employee_name, String in_employee_lastname,
                            String in_employee_position, Double in_employee_salary, Date in_employee_hire_date,
-                           Integer in_employee_restaurant_id, Byte in_employee_status);
+                           Long in_employee_restaurant_id, Byte in_employee_status);
 }

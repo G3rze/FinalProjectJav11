@@ -19,6 +19,7 @@ public class EmployeeParameters {
     private double salary;
     private Date dateOfHire;
     private long idRestaurant;
+    private Byte status;
     /*
 
     void setDate(LocalDate localDate){

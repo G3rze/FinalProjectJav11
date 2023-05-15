@@ -12,7 +12,7 @@ public interface IEmployeeService {
     List<EmployeeEntity> allEmployees();
     Optional<EmployeeEntity> getEmployeeById(long id);
 
-    EmployeeEntity newEmployee(EmployeeParameters employeeParameters);
+    void createEmployee(EmployeeParameters employeeParameters);
 
     void updateEmployee(EmployeeEntity newEmployee);
 
