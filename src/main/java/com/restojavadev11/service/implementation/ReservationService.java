@@ -5,16 +5,18 @@ import com.restojavadev11.parameters.ReservationParameters;
 import com.restojavadev11.service.IReservationService;
 import com.restojavadev11.entity.ReservationEntity;
 import com.restojavadev11.repositories.ReservationRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.transaction.Transactional;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class ReservationService implements IReservationService {
 
-    @Autowired
+
     private ReservationRepository reservationRepository;
 
     @Override
@@ -33,17 +35,45 @@ public class ReservationService implements IReservationService {
     }
 
     @Override
-    public ReservationEntity newReservation(ReservationParameters reservationParameters) {
-        return newReservation(reservationParameters);
+    @Transactional
+    public Optional<ReservationEntity> newReservation(ReservationParameters reservationParameters) {
+        Long id = reservationRepository.createReservation(reservationParameters.getDate(),
+                reservationParameters.getStartTime(), reservationParameters.getEndTime(),
+                reservationParameters.getNPeople(),reservationParameters.getNTable(),
+                reservationParameters.getStatus(), reservationParameters.getIdCustomer());
+        return reservationRepository.findById(id);
+    }
+
+
+    @Override
+    @Transactional
+    public void updateReservation(ReservationParameters reservationParameters) {
+        reservationRepository.updateReservation(reservationParameters.getId(), reservationParameters.getDate(),
+                reservationParameters.getStartTime(), reservationParameters.getEndTime(),
+                reservationParameters.getNPeople(),reservationParameters.getNTable(),
+                reservationParameters.getIdCustomer(), reservationParameters.getIdEmployee(), reservationParameters.getStatus());
     }
 
     @Override
-    public void deleteReservation(long id) {
-        reservationRepository.deleteById(id);
+    @Transactional
+    public void setInProcessReservation(ReservationParameters reservationParameters){
+        reservationRepository.inProcessReservation(reservationParameters.getId());
+    }
+    @Override
+    @Transactional
+    public void cancelReservation(ReservationParameters reservationParameters){
+        reservationRepository.cancelReservation(reservationParameters.getId());
+    }
+    @Override
+    @Transactional
+    public void closeReservation(ReservationParameters reservationParameters){
+        reservationRepository.closeReservation(reservationParameters.getId());
+    }
+    @Override
+    @Transactional
+    public void claimReservation(ReservationParameters reservationParameters){
+        reservationRepository.claimReservation(reservationParameters.getId(), reservationParameters.getIdEmployee());
     }
 
-    @Override
-    public void updateReservation(ReservationEntity newReservation) {
-        reservationRepository.save(newReservation);
-    }
+
 }

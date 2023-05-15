@@ -1,7 +1,6 @@
 package com.restojavadev11.service;
 
 import com.restojavadev11.entity.ReservationEntity;
-import com.restojavadev11.entity.ReservationTableEntity;
 import com.restojavadev11.parameters.ReservationParameters;
 
 import java.util.List;
@@ -14,12 +13,13 @@ public interface IReservationService {
 
     Optional<ReservationEntity> getReservationById(long id);
 
-    ReservationEntity newReservation(ReservationParameters reservationParameters);
+    Optional<ReservationEntity> newReservation(ReservationParameters reservationParameters);
+    void updateReservation(ReservationParameters reservationParameters);
 
-    void deleteReservation(long id);
-
-
-    void updateReservation(ReservationEntity newReservation);
+    void setInProcessReservation(ReservationParameters reservationParameters);
+    void cancelReservation(ReservationParameters reservationParameters);
+    void closeReservation(ReservationParameters reservationParameters);
+    void claimReservation(ReservationParameters reservationParameters);
 
 
 }
