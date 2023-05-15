@@ -48,5 +48,8 @@ public class EmployeeEntity {
     @Column(name = "e_status", nullable = false)
     private Boolean status;
 
+    @JoinColumn(name = "user_id")
+    @OneToOne
+    private UserEntity user;
 
 }
