@@ -1,10 +1,14 @@
 package com.restojavadev11.service.implementation;
 
+import com.restojavadev11.entity.CustomerEntity;
 import com.restojavadev11.exceptions.DataAccessException;
 import com.restojavadev11.parameters.ReservationParameters;
+import com.restojavadev11.repositories.CustomerRepository;
+import com.restojavadev11.repositories.EmployeeRepository;
 import com.restojavadev11.service.IReservationService;
 import com.restojavadev11.entity.ReservationEntity;
 import com.restojavadev11.repositories.ReservationRepository;
+import com.restojavadev11.service.IUserService;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,7 +22,9 @@ public class ReservationService implements IReservationService {
 
 
     private ReservationRepository reservationRepository;
-
+    private IUserService userService;
+    private CustomerRepository customerRepository;
+    private EmployeeRepository employeeRepository;
     @Override
     public List<ReservationEntity> allReservations() {
         return reservationRepository.findAll();
@@ -48,10 +54,11 @@ public class ReservationService implements IReservationService {
     @Override
     @Transactional
     public void updateReservation(ReservationParameters reservationParameters) {
+        CustomerEntity customerEntity = customerRepository.findByUserId(userService.getCurrentUser().getId());
         reservationRepository.updateReservation(reservationParameters.getId(), reservationParameters.getDate(),
                 reservationParameters.getStartTime(), reservationParameters.getEndTime(),
                 reservationParameters.getNPeople(),reservationParameters.getNTable(),
-                reservationParameters.getIdCustomer(), reservationParameters.getIdEmployee(), reservationParameters.getStatus());
+                customerEntity.getIdCustomer(), reservationParameters.getIdEmployee(), reservationParameters.getStatus());
     }
 
     @Override
@@ -75,5 +82,10 @@ public class ReservationService implements IReservationService {
         reservationRepository.claimReservation(reservationParameters.getId(), reservationParameters.getIdEmployee());
     }
 
+    @Override
+    public Long getOwnReservations(){
+        CustomerEntity customerEntity = customerRepository.findByUserId(userService.getCurrentUser().getId());
+        return customerEntity.getIdCustomer();
+    }
 
 }

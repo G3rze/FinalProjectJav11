@@ -16,6 +16,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,7 +47,7 @@ public class UserService implements IUserService, UserDetailsService  {
     }
 
 
-
+    @Override
     public UserEntity getCurrentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipalName = authentication.getName();
@@ -57,13 +58,9 @@ public class UserService implements IUserService, UserDetailsService  {
         for (GrantedAuthority authority : authentication.getAuthorities()) {
             System.out.println(authority.getAuthority());
         }
-
-
-
         return userRepository.findByEmail(currentPrincipalName).orElseThrow(() ->
                 new UsernameNotFoundException("User not found"));
     }
-
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

@@ -14,5 +14,6 @@ public interface IUserService {
     UserEntity newUser(String email, String Password);
 
     void updateUser(UserEntity newUser);
+    UserEntity getCurrentUser();
 
 }

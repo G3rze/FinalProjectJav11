@@ -13,7 +13,7 @@ import org.springframework.security.oauth2.jwt.JwtEncoderParameters;
 import org.springframework.web.bind.annotation.RestController;
 
 
-@RestController
+//@RestController
 @AllArgsConstructor
 public class JwtAuthenticationResource {
 

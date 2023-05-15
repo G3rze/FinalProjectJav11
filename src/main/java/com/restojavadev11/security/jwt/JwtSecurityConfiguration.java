@@ -6,6 +6,7 @@ import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
 import com.restojavadev11.service.implementation.UserService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,25 +28,18 @@ import java.security.KeyPairGenerator;
 import java.security.interfaces.RSAPublicKey;
 import java.util.UUID;
 
-@Configuration
+//@Configuration
 @EnableMethodSecurity(jsr250Enabled = true, securedEnabled = true)
+@AllArgsConstructor
 public class JwtSecurityConfiguration {
     private UserService userService;
     private PasswordHashGenerator passwordEncoder;
-    // Autowire UserService via a setter method
-    @Autowired
-    public void setUserService(UserService userService, PasswordHashGenerator passwordEncoder) {
-        this.userService = userService;
-        this.passwordEncoder = passwordEncoder;
-    }
 
-
-
-
+    /*
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userService).passwordEncoder(passwordEncoder.passwordEncoder());
-    }
+    }*/
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http)throws Exception{
         http.authorizeHttpRequests

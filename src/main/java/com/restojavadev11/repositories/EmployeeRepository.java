@@ -9,6 +9,7 @@ import java.sql.Date;
 public interface EmployeeRepository extends JpaRepository<EmployeeEntity, Long> {
 
     EmployeeEntity findById(long id);
+    EmployeeEntity findByUserId(long id);
     @Transactional
     @Procedure("create_new_employee")
     void createNewEmployee(String in_email, String in_password, String in_employee_name, String in_employee_lastname,
