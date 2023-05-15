@@ -16,7 +16,6 @@ public interface IBillService {
 
     void deleteBill(long id);
 
-
     void updateBill(BillEntity newBill);
 
 }

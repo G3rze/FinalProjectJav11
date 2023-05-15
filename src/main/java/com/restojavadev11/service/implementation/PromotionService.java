@@ -31,6 +31,11 @@ public class PromotionService implements IPromotionService {
         }
     }
 
+    public List<PromotionEntity> allPromotionsByName(String Pname){
+        List<PromotionEntity> list = promotionRepository.findBypName(Pname);
+        return list;
+    }
+
     @Override
     public PromotionEntity newPromotion(PromotionParameters promotionParameters) {
         PromotionEntity newPromotionEntity = new PromotionEntity();

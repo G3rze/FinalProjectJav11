@@ -20,4 +20,6 @@ public interface IPromotionService {
 
     void updatePromotion(PromotionEntity newPromotion);
 
+    List<PromotionEntity> allPromotionsByName(String name);
+
 }
