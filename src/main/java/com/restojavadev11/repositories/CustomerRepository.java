@@ -2,7 +2,11 @@ package com.restojavadev11.repositories;
 
 import com.restojavadev11.entity.CustomerEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.query.Procedure;
 
 public interface CustomerRepository extends JpaRepository<CustomerEntity, Long> {
+
+    @Procedure("create_new_customer")
+    void createNewCustomer(String in_email, String in_password, String in_customer_name, String in_customer_lastname,
+                           String in_customer_address, String in_customer_phone_number);
 }
