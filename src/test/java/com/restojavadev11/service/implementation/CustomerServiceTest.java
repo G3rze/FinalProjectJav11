@@ -34,7 +34,6 @@ class CustomerServiceTest {
         customerEntity.setCLastName("Hernandez");
         customerEntity.setCAddress("Torres puerta del alma, Avenida el espino y, C. el Pedregal, San Salvador");
         customerEntity.setCPhone("7146-7852");
-        customerEntity.setCEmail("hazel.hernandez@gmail.com");
     }
 
     @Test

@@ -22,11 +22,12 @@ public class BillParameters {
     private Long idReservation;
     private Long idPromotion;
 
-    void setDate(LocalDate localDate){
+    public void setDate(LocalDate localDate){
         this.date = Date.valueOf(localDate);
     }
 
-    void  setTotal(double dTotal){
+
+    public void  setTotal(double dTotal){
         this.total = Math.round(dTotal);
     }
 }
