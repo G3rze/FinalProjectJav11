@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.*;
 public class LogInController {
     private CustomerService customerService;
 
-    @PostMapping("/signup")
-    public void signup(@RequestBody CustomerParameters customerParameters){
+    @PostMapping("/signup/")
+    public void signup(@RequestBody CustomerParameters customerParameters) {
         customerService.createCustomer(customerParameters);
     }
 }

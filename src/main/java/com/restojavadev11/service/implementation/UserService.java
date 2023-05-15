@@ -51,13 +51,6 @@ public class UserService implements IUserService, UserDetailsService  {
     public UserEntity getCurrentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipalName = authentication.getName();
-
-
-        System.out.println("Roles of the current user:");
-
-        for (GrantedAuthority authority : authentication.getAuthorities()) {
-            System.out.println(authority.getAuthority());
-        }
         return userRepository.findByEmail(currentPrincipalName).orElseThrow(() ->
                 new UsernameNotFoundException("User not found"));
     }
@@ -74,9 +67,6 @@ public class UserService implements IUserService, UserDetailsService  {
         String[] roles = userEntity.getRoles().stream()
                 .map(role -> role.getName().replaceFirst("ROLE_", ""))
                 .toArray(String[]::new);
-
-        System.out.println("Roles: ");
-        System.out.println(Arrays.toString(roles));
 
         return User
                 .withUsername(userEntity.getEmail())

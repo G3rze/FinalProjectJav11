@@ -4,6 +4,7 @@ import com.restojavadev11.entity.MenuEntity;
 import com.restojavadev11.parameters.MenuParameters;
 import com.restojavadev11.service.IMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,6 +27,7 @@ public class MenuController {
         return menuService.getMenuById(id);
     }
 
+    @PreAuthorize("hasRole('ADMIN') or hasAuthority('SCOPE_ROLE_ADMIN')")
     @PostMapping("/create")
     public void insterMenu(@RequestBody MenuParameters menuParameters){
         MenuEntity newMenu =  menuService.newMenu(menuParameters);
