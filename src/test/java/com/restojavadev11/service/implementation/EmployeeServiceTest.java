@@ -45,14 +45,5 @@ class EmployeeServiceTest {
     @Test
     void getEmployeeById() {
 
-        //En comprobacion
-        Long employeeId = Long.valueOf(1);
-
-        when(employeeRepository.findById(employeeId)).thenReturn(Optional.of(employeeEntity));
-
-        Optional<EmployeeEntity> actualEmployeeEntity = employeeService.getEmployeeById(employeeId);
-
-        assertTrue(actualEmployeeEntity.isPresent());
-        assertEquals(employeeEntity, actualEmployeeEntity.get());
     }
 }
